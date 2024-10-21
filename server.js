@@ -5,7 +5,7 @@ const cors = require('cors')
 
 app.use(cors())
 
-const teamManager = {
+const teams = {
     'arsenal': {
         'managerName': 'Mikel Arteta Amatriain',
         'age': 42,
@@ -125,8 +125,26 @@ const teamManager = {
         'age': 41,
         'placeOfBirth': 'Beckenham, England',
         'titlesWon': 0 
+    },
+    'unknown': {
+        'managerName': 'unknown',
+        'age': 0,
+        'placeOfBirth': 'unknown',
+        'titlesWon': 0 
     }
 }
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html')
+})
+app.get('/api/:name', (req, res) => {
+    const managerName = req.params.name.toLowerCase()
+    if(teams[managerName]){
+        res.json(teams[managerName])
+    }else{
+        res.json(teams['unknown'])
+    }
+})
+
+app.listen(process.env.PORT || PORT, () => {
+    console.log(`The server is now runiing on ${PORT}!`)
 })
