@@ -151,7 +151,7 @@ const teams = {
         'age': 0,
         'placeOfBirth': 'unknown',
         'plTitles': 0 ,
-        'imgUrl': ''
+        'imgUrl': 'https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Premier_League_Logo.svg/1920px-Premier_League_Logo.svg.png'
     }
 }
 app.get('/', (req, res) => {
